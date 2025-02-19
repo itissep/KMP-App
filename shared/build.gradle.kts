@@ -40,6 +40,8 @@ kotlin {
 
             implementation(libs.koin)
 
+            implementation(libs.androidx.lifecycle.viewmodel)
+
         }
         iosMain.dependencies {
             implementation(libs.ktor.ios)

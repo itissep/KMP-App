@@ -2,15 +2,16 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-	let greet = Greeting().greet()
+    @ObservedObject var newsViewModel = NewsListViewModel()
 
 	var body: some View {
-		Text(greet)
-	}
-}
-
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
+        VStack {
+            Text("there")
+            ForEach(newsViewModel.news, id: \.content) { item in
+                Text(item.author ?? "someone")
+            }
+        }.onAppear {
+            newsViewModel.loadNews()
+        }
 	}
 }

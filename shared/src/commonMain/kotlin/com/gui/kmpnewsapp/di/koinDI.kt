@@ -2,13 +2,12 @@ package com.gui.kmpnewsapp.di
 
 import com.gui.kmpnewsapp.networking.NetworkClient
 import com.gui.kmpnewsapp.service.NewsService
+import com.gui.kmpnewsapp.useCases.NewsUseCase
+import com.gui.kmpnewsapp.viewModel.NewsViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
-//import ru.azharkova.otusnewskmpcompose.usecase.NewsUseCase
-//import ru.azharkova.otusnewskmpcompose.viewmodel.NewsViewModel
 import kotlin.reflect.KClass
-
 
 class KoinDI : KoinComponent {
     val serviceModule = module {
@@ -16,19 +15,18 @@ class KoinDI : KoinComponent {
         single { NewsService(get()) }
     }
 
-//    val usecaseModule = module {
-//        factory {
-//            NewsUseCase(get())
-//        }
-//    }
+    val usecaseModule = module {
+        factory {
+            NewsUseCase(get())
+        }
+    }
 
-//    val vmModule = module {
-//        factory<NewsViewModel> { NewsViewModel(get()) }
-//    }
+    val vmModule = module {
+        factory<NewsViewModel> { NewsViewModel(get()) }
+    }
 
     fun start() = startKoin {
-        modules(listOf(serviceModule))
-//        modules(listOf(serviceModule, usecaseModule, vmModule))
+        modules(listOf(serviceModule, usecaseModule, vmModule))
     }
 }
 
