@@ -1,0 +1,16 @@
+*.iml
+*.gradle
+/local.properties
+.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+local.properties
+.cxx
+local.properties
+/multiplatformLibrary/build/
+/*/build/
+**/build/
+/androidlk/build/
+/multiplatformLibrary/build/
